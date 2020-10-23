@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Movies</string>
+    <string name="overview">Overview</string>
+    <string name="releasedon">"Released on : "</string>
+    <string name="sortbyrating">Sort by rating</string>
+    <string name="sortbydate">Sort by date</string>
+    <string name="somethingwentwrong">Someting went wrong</string>
+    <string name="loadingContent">Loading Content</string>
+</resources>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/cardColor">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/backDropShimmer"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+            <ImageView
+                android:id="@+id/backDropImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:background="@android:color/white"
+                />
+
+                <TextView
+                    android:id="@+id/bannertitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="@dimen/padding_10"
+                    android:textColor="@color/cardColor"
+                    android:gravity="center"
+                    />
+                </RelativeLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                 android:layout_width="154dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/posterShimmer"
+                app:layout_constraintTop_toBottomOf="@+id/backDropShimmer"
+                app:layout_constraintLeft_toLeftOf="parent"
+                >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <ImageView
+                        android:id="@+id/posterImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="154dp"
+                        android:layout_margin="10dp"
+                         android:background="@android:color/white"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/postertitle"
+                        android:layout_width="154dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="@dimen/padding_10"
+                        android:textColor="@color/cardColor"
+                        android:gravity="center"
+
+                        />
+                </RelativeLayout>
+
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txttitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/backDropShimmer"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/posterShimmer"
+                    android:text="Title"
+                    android:textColor="@android:color/white"
+                     android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/padding_10"
+                     />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ratingImage"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/star"
+                app:layout_constraintTop_toBottomOf="@+id/txttitle"
+                app:layout_constraintStart_toEndOf="@+id/posterShimmer"
+                android:layout_marginTop="@dimen/padding_10"
+                 />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/lblReleaseDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/posterShimmer"
+                app:layout_constraintTop_toBottomOf="@+id/ratingImage"
+                android:text="@string/releasedon"
+                android:textColor="@android:color/white"
+                 android:layout_marginTop="@dimen/padding_10"
+
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/ratingImage"
+                app:layout_constraintTop_toBottomOf="@+id/txttitle"
+                android:text=""
+                android:textColor="@android:color/white"
+                android:layout_marginTop="@dimen/padding_10"
+                />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtReleaseDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ratingImage"
+                android:text="@string/releasedon"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="@dimen/padding_10"
+                app:layout_constraintStart_toEndOf="@+id/lblReleaseDate"
+                />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/lblOverview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/posterShimmer"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/overview"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:layout_margin="10dp"/>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtOverivew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/lblOverview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Overview"
+                android:textColor="@android:color/white"
+                android:layout_margin="10dp"
+                android:textSize="12sp"/>
+
+
+
+
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
