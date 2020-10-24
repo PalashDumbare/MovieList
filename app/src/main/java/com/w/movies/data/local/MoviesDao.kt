@@ -1,11 +1,10 @@
 package com.w.movies.data.local
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import com.w.movies.model.Results
+import androidx.room.*
+import androidx.sqlite.db.SupportSQLiteQuery
+ import com.w.movies.model.Results
+
 
 @Dao
 interface MoviesDao {
@@ -16,7 +15,8 @@ interface MoviesDao {
     @Query("Select * from movies")
     fun getAllMovies(): LiveData<List<Results>>
 
-
+    @RawQuery(observedEntities = [Results::class])
+    fun getSortedMovies(query: SupportSQLiteQuery?): LiveData<List<Results>>
 
     @Query("Delete from movies")
     fun deleteAllMovies()

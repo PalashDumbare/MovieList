@@ -2,6 +2,7 @@ package com.w.movies.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.Observer
@@ -43,13 +44,26 @@ class MovieListActivity : BaseActivity(),ItemClickListener<Results> {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.rating ->{
-                 movieViewModel.setSortingRule(Sorting.byRating())
-                 movieViewModel.loadData()
-                 true
+
+                if (this.isConnectedToNetwork()) {
+                    movieViewModel.setSortingRule(Sorting.byRating().first)
+                    movieViewModel.loadData()
+                }else{
+                    movieViewModel.setSortingRule(Sorting.byRating().second)
+                    movieViewModel.sort()
+                    observeSortedMovies()
+                }
+                true
             }
             R.id.releasedate->{
-                movieViewModel.setSortingRule(Sorting.byDate())
-                movieViewModel.loadData()
+                if (this.isConnectedToNetwork()) {
+                    movieViewModel.setSortingRule(Sorting.byDate().first)
+                    movieViewModel.loadData()
+                }else{
+                    movieViewModel.setSortingRule(Sorting.byDate().second)
+                    movieViewModel.sort()
+                    observeSortedMovies()
+                }
                 true
             }
 
@@ -59,12 +73,18 @@ class MovieListActivity : BaseActivity(),ItemClickListener<Results> {
         }
     }
 
+    fun observeSortedMovies(){
+        movieViewModel.sort().observe(this, Observer {
+             adapter.swapValue(it)
+        })
+    }
+
     fun initializations(){
         adapter = MoviesAdapter(this)
         movieList.layoutManager = GridLayoutManager(this,2)
         movieList.adapter = adapter
         movieViewModel =  ViewModelProviders.of(this,viewModelFactory).get(MovieViewModel::class.java)
-        movieViewModel.setSortingRule(Sorting.byRating())
+        movieViewModel.setSortingRule(Sorting.byRating().first)
     }
 
 
@@ -81,6 +101,7 @@ class MovieListActivity : BaseActivity(),ItemClickListener<Results> {
     fun observeViewModel(){
 
 
+        movieViewModel.loadData()
         observeMovieList()
 
 

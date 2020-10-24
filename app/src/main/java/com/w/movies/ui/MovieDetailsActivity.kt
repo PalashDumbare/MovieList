@@ -7,10 +7,7 @@ import androidx.core.content.ContextCompat
 import com.w.movies.R
 import com.w.movies.interfaces.ImageSetListener
 import com.w.movies.model.Results
-import com.w.movies.supporting.DateUtils
-import com.w.movies.supporting.Utils
-import com.w.movies.supporting.baseURlForImage_w154
-import com.w.movies.supporting.baseURlForImage_w780
+import com.w.movies.supporting.*
 import kotlinx.android.synthetic.main.movie_details.*
 
 class MovieDetailsActivity : AppCompatActivity() {
@@ -41,7 +38,7 @@ class MovieDetailsActivity : AppCompatActivity() {
          }else{
             postertitle.visibility = View.GONE
             posterImage.visibility = View.VISIBLE
-            Utils.loadImage(ctx = this, uri = baseURlForImage_w154+movieDetails.poster_path, imageView = posterImage)
+            Utils.loadImage( uri = baseURlForImage_w342+movieDetails.poster_path, imageView = posterImage)
 
         }
 
@@ -51,7 +48,7 @@ class MovieDetailsActivity : AppCompatActivity() {
             backDropShimmer.stopShimmerAnimation()
         }else{
              bannertitle.visibility = View.GONE
-             Utils.loadImage(ctx = this, uri = baseURlForImage_w780 + movieDetails.backdrop_path, imageView = backDropImage)
+             Utils.loadImage( uri = baseURlForImage_w780 + movieDetails.backdrop_path, imageView = backDropImage)
          }
 
         txttitle.setText(movieDetails.title)

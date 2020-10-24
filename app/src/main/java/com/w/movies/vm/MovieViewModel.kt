@@ -25,6 +25,11 @@ class MovieViewModel(private val repository : MovieRepository) : ViewModel() {
         this.sortBy = sortBy
     }
 
+
+    fun sort(): LiveData<List<Results>> {
+        return repository.sortedMovies(sortBy)
+    }
+
     /***
      * THis method will call setSortingRule to set sort for future use
      * **/
@@ -36,7 +41,11 @@ class MovieViewModel(private val repository : MovieRepository) : ViewModel() {
                     reqStatus.postValue(Resource.done())
                 } catch (unknownHost: UnknownHostException) {
                     unknownHost.printStackTrace()
-                    reqStatus.postValue(Resource.done())
+                    if (repository.movies.value.isNullOrEmpty()) {
+                        reqStatus.postValue(Resource.error(unknownHost.localizedMessage))
+                    }else{
+                        reqStatus.postValue(Resource.done())
+                    }
                  } catch (exception: Exception) {
                     reqStatus.postValue(Resource.error(exception.localizedMessage))
                 }

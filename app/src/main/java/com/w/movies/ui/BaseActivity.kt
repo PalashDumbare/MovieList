@@ -4,6 +4,8 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.view.Window
 import android.widget.Toast
 import com.w.movies.R
@@ -46,6 +48,11 @@ cancelLoading()
     override fun onPause() {
         super.onPause()
         cancelLoading()
+    }
+
+    fun Context.isConnectedToNetwork(): Boolean {
+        val connectivityManager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
+        return connectivityManager?.activeNetworkInfo?.isConnectedOrConnecting() ?: false
     }
     
 }
