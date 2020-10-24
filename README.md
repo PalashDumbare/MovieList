@@ -2,8 +2,9 @@
 Architecture used is MVVM
 
 Following libraries are used :  
-1.Retrofit  
-2.Glide  
-3.Room Db
+1.Retrofit for network operation
+2.Fresco for image loading  
+3.Room Db for local storage
 
-![alt text](https://github.com/PalashDumbare/MovieList/blob/main/movielist.png)
+<img src="https://github.com/PalashDumbare/MovieList/blob/main/movielist.png" width="200" />
+<img src="https://github.com/PalashDumbare/MovieList/blob/main/details.png" width="200" />
